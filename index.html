@@ -146,7 +146,6 @@ if (window.innerWidth > 799) {
 } else {
   document.getElementById('instructions').innerHTML = instructions;
 }
-// var hit = true;
 var create_email = false;
 var final_transcript = '';
 
@@ -160,8 +159,6 @@ if (!('webkitSpeechRecognition' in window)) {
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
-
-  // startButton({timestamp: 0});
 
   recognition.onstart = function() {
     recognizing = true;
@@ -230,20 +227,9 @@ if (!('webkitSpeechRecognition' in window)) {
       final_span.innerHTML = '';
       interim_span.innerHTML = '';
       event.results = [];
-      // hit = false;
       console.log('final');
     } else if (interim_transcript) {
-      // if (hit) {
-      //   setTimeout(function () {
-      //     hit = false;
-      //     goToMap(interim_transcript);
-      //     interim_transcript = '';
-      //     final_span.innerHTML = '';
-      //     interim_span.innerHTML = '';
-      //     event.results = []
-      //     console.log('interim');
-      //   }, 1000);
-      // }
+      // could do something here too, but its triggered pretty often...
     }
   };
 }
@@ -264,6 +250,7 @@ function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
 
+/*
 function createEmail() {
   var n = final_transcript.indexOf('\n');
   if (n < 0 || n >= 80) {
@@ -296,6 +283,7 @@ function emailButton() {
   email_info.style.display = 'inline-block';
   showInfo('');
 }
+*/
 
 function goToMap(transcript) {
   document.getElementById("map").style.display = 'block';
